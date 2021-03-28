@@ -5,7 +5,7 @@ interface Props {
   stages: TypingStage[];
 }
 
-const Typing: React.FC<Props> = ({ stages, element: Element, children }) => {
+const Typing: React.FC<Props> = ({ stages, element: Element }) => {
   const [text, setText] = useState('');
   const [stageIndex, setStageIndex] = useState(0);
 
