@@ -1,28 +1,23 @@
 import 'bootstrap/scss/bootstrap.scss';
 import React from 'react';
-import { Card, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import { hot } from 'react-hot-loader/root';
+import HeaderNav from './components/HeaderNav';
+import PageSection from './components/PageSection';
 import './styles/dracula.css';
 import './styles/style.scss';
-import { FaGithub } from 'react-icons/fa/index';
+import { Container } from './styles/styles';
+import useWindowSize from './utils/useWindowsSize';
 
 const App: React.FC<{}> = () => {
+  const { width, height } = useWindowSize();
+
   return (
     <Container>
-      <Navbar expand="lg">
-        <Navbar.Brand href="#home">
-          <FaGithub /> LuscasLeo.dev
-        </Navbar.Brand>
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
-          </Navbar.Text>
-        </Navbar.Collapse>
-      </Navbar>
-      <Row>
-        <Col xs={8}>Col1</Col>
-        <Col xs={4}>Col2</Col>
-      </Row>
+      <PageSection id="sec1" color="red">
+        <HeaderNav />
+      </PageSection>
+      <PageSection id="sec2" color="yellow"></PageSection>
+      <PageSection id="sec3" color="green"></PageSection>
     </Container>
   );
 };
