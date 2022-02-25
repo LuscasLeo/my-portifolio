@@ -12,6 +12,9 @@ function App() {
       <a target="_blank" href="https://www.linkedin.com/in/luscasleodev/">Esse é meu linkedin</a>
       <br />
       <a target="_blank" href="https://github.com/LuscasLeo/">Esse é meu github</a>
+
+      <br />
+      <marquee>please give me a job 🙏🏻</marquee>
     </code>
   );
 }
