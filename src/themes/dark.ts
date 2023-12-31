@@ -32,6 +32,7 @@ export default createTheme({
     },
     background: {
       default: colors["surface-mixed-100"],
+      
     },
     text: {
       primary: colors["surface-mixed-600"],

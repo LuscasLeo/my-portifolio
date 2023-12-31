@@ -1,5 +1,5 @@
 import { DarkMode, GitHub, LightMode, LinkedIn } from "@mui/icons-material";
-import { Box, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled } from "@mui/material";
+import { Box, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled, useTheme } from "@mui/material";
 import lucasThink from "./assets/lucas-think.webp";
 import "./styles.scss";
 import dark from "./themes/dark";
@@ -29,9 +29,25 @@ const Jumbotron = styled(Box)`
   align-items: center;
   margin-top: 20vh;
   text-align: center;
+  background-color: ${({ theme }) => theme.palette.primary.main};
+  border-radius: 1rem;
+`;
+
+const PictureBox = styled(Box)`
+  width: 30rem;
+  height: 30rem;
+  overflow: hidden;
+  img,
+  picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 function App() {
+
+  const theme = useTheme();
   return (
     <ThemeProvider theme={dark}>
       <DocumentContainer>
@@ -43,18 +59,18 @@ function App() {
                 <Typography variant="h5">Luscas Leo</Typography>
               </Box>
               <Box>
-                <IconButton>
+                <IconButton href="https://github.com/LuscasLeo" target="_blank">
                   <GitHub />
                 </IconButton>
-                <IconButton>
+                <IconButton href="https://www.linkedin.com/in/luscasleodev/" target="_blank">
                   <LinkedIn />
                 </IconButton>
-                <IconButton>
+                {/* <IconButton>
                   <LightMode />
                 </IconButton>
                 <IconButton>
                   <DarkMode />
-                </IconButton>
+                </IconButton> */}
               </Box>
             </Stack>
           </Container>
@@ -62,21 +78,28 @@ function App() {
         <MainContainer>
           <Container>
             <Jumbotron>
-              <Box>
-                <Typography variant="h1">Luscas Leo</Typography>
-                <Typography variant="h5">Software Engineer</Typography>
-              </Box>
-              <Box>
+              <Stack alignItems={"start"} display={"flex"} textAlign={"start"} paddingLeft={theme.spacing(4)}>
+                <Typography variant="h6">Hello, I'm</Typography>
+                <Typography variant="h1" flex={1}>
+                  Lucas Leonardo,
+                </Typography>
+                <Typography variant="body1">
+                  a self taught <b>software engineer</b> and <b>devops enthusiast</b> with 5 years in the industry.
+                </Typography>
+              </Stack>
+              <PictureBox>
                 <picture>
                   <source srcSet={lucasThink} type="image/webp" />
                   <img src={lucasThink} alt="Lucas Leo" />
                 </picture>
-              </Box>
+              </PictureBox>
             </Jumbotron>
           </Container>
         </MainContainer>
         <FooterContainer>
-          <Container>Footer</Container>
+          <Container>
+            <Typography>© 2024 Luscas Leo. All rights reserved.</Typography>
+          </Container>
         </FooterContainer>
       </DocumentContainer>
     </ThemeProvider>
