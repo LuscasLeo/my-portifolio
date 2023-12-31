@@ -1,27 +1,85 @@
+import { DarkMode, GitHub, LightMode, LinkedIn } from "@mui/icons-material";
+import { Box, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled } from "@mui/material";
+import lucasThink from "./assets/lucas-think.webp";
 import "./styles.scss";
+import dark from "./themes/dark";
+const DocumentContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
-import Marquee from "react-fast-marquee";
+const HeaderContainer = styled(Box)`
+  background-color: ${({ theme }) => theme.palette.primary.main};
+  padding: ${({ theme }) => `${theme.spacing(2)} ${theme.spacing(0)}`};
+`;
+
+const MainContainer = styled(Box)`
+  flex: 1;
+`;
+
+const FooterContainer = styled(Box)`
+  background-color: ${({ theme }) => theme.palette.primary.main};
+  padding: ${({ theme }) => theme.spacing(2)};
+`;
+
+const Jumbotron = styled(Box)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+  text-align: center;
+`;
 
 function App() {
   return (
-    <code lang="typescript">
-      Olá, meu nome é Lucas Silva <s>pode me chamar de lusca</s>
-      <br />
-      tenho 22 anos
-      <br />
-      <br />
-      Sou programador backend <s>notoriamente</s>
-      <br />
-      <a target="_blank" href="https://www.linkedin.com/in/luscasleodev/">
-        Esse é meu linkedin
-      </a>
-      <br />
-      <a target="_blank" href="https://github.com/LuscasLeo/">
-        Esse é meu github
-      </a>
-      <br />
-      <Marquee gradient={false}>please give me a job 🙏🏻</Marquee>
-    </code>
+    <ThemeProvider theme={dark}>
+      <DocumentContainer>
+        <CssBaseline enableColorScheme />
+        <HeaderContainer>
+          <Container>
+            <Stack direction={"row"} alignItems={"center"}>
+              <Box flex={1}>
+                <Typography variant="h5">Luscas Leo</Typography>
+              </Box>
+              <Box>
+                <IconButton>
+                  <GitHub />
+                </IconButton>
+                <IconButton>
+                  <LinkedIn />
+                </IconButton>
+                <IconButton>
+                  <LightMode />
+                </IconButton>
+                <IconButton>
+                  <DarkMode />
+                </IconButton>
+              </Box>
+            </Stack>
+          </Container>
+        </HeaderContainer>
+        <MainContainer>
+          <Container>
+            <Jumbotron>
+              <Box>
+                <Typography variant="h1">Luscas Leo</Typography>
+                <Typography variant="h5">Software Engineer</Typography>
+              </Box>
+              <Box>
+                <picture>
+                  <source srcSet={lucasThink} type="image/webp" />
+                  <img src={lucasThink} alt="Lucas Leo" />
+                </picture>
+              </Box>
+            </Jumbotron>
+          </Container>
+        </MainContainer>
+        <FooterContainer>
+          <Container>Footer</Container>
+        </FooterContainer>
+      </DocumentContainer>
+    </ThemeProvider>
   );
 }
 
