@@ -25,18 +25,34 @@ export default createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: colors["surface-mixed-200"],
+      main: colors["surface-mixed-600"],
+      "100": colors["surface-mixed-100"],
+      "200": colors["surface-mixed-200"],
+      "300": colors["surface-mixed-300"],
+      "400": colors["surface-mixed-400"],
+      "500": colors["surface-mixed-500"],
+      "600": colors["surface-mixed-600"],
+
     },
     secondary: {
-      main: colors["primary-500"],
+      main: colors["surface-mixed-500"],
+      
+      "100": colors["surface-mixed-100"],
+      "200": colors["surface-mixed-200"],
+      "300": colors["surface-mixed-300"],
+      "400": colors["surface-mixed-400"],
+      "500": colors["surface-mixed-500"],
+      "600": colors["surface-mixed-600"],
+
+      
     },
     background: {
       default: colors["surface-mixed-100"],
-      
+      paper: colors["surface-mixed-200"],
     },
     text: {
-      primary: colors["surface-mixed-600"],
-      secondary: colors["surface-mixed-600"],
+      primary: "#fff",
+      secondary: "#fff",
     },
   },
 });

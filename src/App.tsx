@@ -1,5 +1,5 @@
-import { DarkMode, GitHub, LightMode, LinkedIn } from "@mui/icons-material";
-import { Box, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled, useTheme } from "@mui/material";
+import { GitHub, LinkedIn } from "@mui/icons-material";
+import { Box, Button, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled, useTheme } from "@mui/material";
 import lucasThink from "./assets/lucas-think.webp";
 import "./styles.scss";
 import dark from "./themes/dark";
@@ -10,7 +10,7 @@ const DocumentContainer = styled(Box)`
 `;
 
 const HeaderContainer = styled(Box)`
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.primary["200"]};
   padding: ${({ theme }) => `${theme.spacing(2)} ${theme.spacing(0)}`};
 `;
 
@@ -19,8 +19,8 @@ const MainContainer = styled(Box)`
 `;
 
 const FooterContainer = styled(Box)`
-  background-color: ${({ theme }) => theme.palette.primary.main};
   padding: ${({ theme }) => theme.spacing(2)};
+  background-color: ${({ theme }) => theme.palette.primary["200"]};
 `;
 
 const Jumbotron = styled(Box)`
@@ -29,7 +29,7 @@ const Jumbotron = styled(Box)`
   align-items: center;
   margin-top: 20vh;
   text-align: center;
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.background.paper};
   border-radius: 1rem;
 `;
 
@@ -46,7 +46,6 @@ const PictureBox = styled(Box)`
 `;
 
 function App() {
-
   const theme = useTheme();
   return (
     <ThemeProvider theme={dark}>
@@ -65,6 +64,10 @@ function App() {
                 <IconButton href="https://www.linkedin.com/in/luscasleodev/" target="_blank">
                   <LinkedIn />
                 </IconButton>
+                <Button href="https://bsky.app/profile/luscasleo.dev" target="_blank" variant="outlined">
+                  Bsky
+                </Button>
+
                 {/* <IconButton>
                   <LightMode />
                 </IconButton>
