@@ -3,6 +3,7 @@ import { Box, Button, Container, CssBaseline, IconButton, Stack, ThemeProvider, 
 import lucasThink from "./assets/lucas-think.webp";
 import "./styles.scss";
 import dark from "./themes/dark";
+import { Bsky } from "./components/icons";
 const DocumentContainer = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -64,9 +65,9 @@ function App() {
                 <IconButton href="https://www.linkedin.com/in/luscasleodev/" target="_blank">
                   <LinkedIn />
                 </IconButton>
-                <Button href="https://bsky.app/profile/luscasleo.dev" target="_blank" variant="outlined">
-                  Bsky
-                </Button>
+                <IconButton href="https://bsky.app/profile/luscasleo.dev" target="_blank">
+                  <Bsky />
+                </IconButton>
 
                 {/* <IconButton>
                   <LightMode />
@@ -101,7 +102,7 @@ function App() {
         </MainContainer>
         <FooterContainer>
           <Container>
-            <Typography>© 2024 Luscas Leo. All rights reserved.</Typography>
+            <Typography>© 2025 Luscas Leo. All rights reserved.</Typography>
           </Container>
         </FooterContainer>
       </DocumentContainer>

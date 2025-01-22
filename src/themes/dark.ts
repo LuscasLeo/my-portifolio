@@ -22,6 +22,9 @@ const colors = {
 };
 
 export default createTheme({
+  typography: {
+    fontFamily: "Inter, serif",
+  },
   palette: {
     mode: "dark",
     primary: {
@@ -32,19 +35,16 @@ export default createTheme({
       "400": colors["surface-mixed-400"],
       "500": colors["surface-mixed-500"],
       "600": colors["surface-mixed-600"],
-
     },
     secondary: {
       main: colors["surface-mixed-500"],
-      
+
       "100": colors["surface-mixed-100"],
       "200": colors["surface-mixed-200"],
       "300": colors["surface-mixed-300"],
       "400": colors["surface-mixed-400"],
       "500": colors["surface-mixed-500"],
       "600": colors["surface-mixed-600"],
-
-      
     },
     background: {
       default: colors["surface-mixed-100"],
