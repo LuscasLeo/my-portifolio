@@ -1,9 +1,9 @@
 import { GitHub, LinkedIn } from "@mui/icons-material";
-import { Box, Button, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled, useTheme } from "@mui/material";
+import { Box, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled, useTheme } from "@mui/material";
 import lucasThink from "./assets/lucas-think.webp";
+import Bsky from "./components/icons/Bsky";
 import "./styles.scss";
 import dark from "./themes/dark";
-import { Bsky } from "./components/icons";
 const DocumentContainer = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -66,15 +66,8 @@ function App() {
                   <LinkedIn />
                 </IconButton>
                 <IconButton href="https://bsky.app/profile/luscasleo.dev" target="_blank">
-                  <Bsky />
+                  <Bsky height={20} width={20} fill="#fff" />
                 </IconButton>
-
-                {/* <IconButton>
-                  <LightMode />
-                </IconButton>
-                <IconButton>
-                  <DarkMode />
-                </IconButton> */}
               </Box>
             </Stack>
           </Container>

@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import * as path from "path";
 import svgr from "vite-plugin-svgr";
-
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -12,10 +11,22 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "src/components"),
     },
   },
-  plugins: [react(), svgr()],
+  plugins: [
+    react(),
+    svgr({
+      svgrOptions: {
+        plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
+        svgoConfig: {
+          floatPrecision: 2,
+        },
+      },
+    }),
+  ],
   server: {
     hmr: {
-      clientPort: !!process.env.CODESPACES ? 443 : 80,
+      ...(process.env.CODESPACES && {
+        clientPort: 443,
+      }),
     },
   },
   build: {
