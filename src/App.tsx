@@ -1,7 +1,71 @@
+import ArgoCd from "@components/icons/ArgoCd";
+import Bsky from "@components/icons/Bsky";
+import Docker from "@components/icons/Docker";
+import Fastapi from "@components/icons/Fastapi";
+import Git from "@components/icons/Git";
+import Go from "@components/icons/Go";
+import Grafana from "@components/icons/Grafana";
+import GrafanaTempo from "@components/icons/GrafanaTempo";
+import Helm from "@components/icons/Helm";
+import Influxdb from "@components/icons/Influxdb";
+import Javascript from "@components/icons/Javascript";
+import Kibana from "@components/icons/Kibana";
+import Kubernetes from "@components/icons/Kubernetes";
+import Linux from "@components/icons/Linux";
+import Liquibase from "@components/icons/Liquibase";
+import LogoLoki from "@components/icons/LogoLoki";
+import Markdown from "@components/icons/Markdown";
+import Mysql from "@components/icons/Mysql";
+import OhMyZsh from "@components/icons/OhMyZsh";
+import Portainer from "@components/icons/Portainer";
+import Postgressql from "@components/icons/Postgressql";
+import Prometheus from "@components/icons/Prometheus";
+import Python from "@components/icons/Python";
+import Rabbitmq from "@components/icons/Rabbitmq";
+import React from "@components/icons/React";
+import Redis from "@components/icons/Redis";
+import StackOverflow from "@components/icons/StackOverflow";
+import Typescript from "@components/icons/Typescript";
+
+type Tecnology = {
+  svg: React.FC<React.SVGProps<SVGSVGElement>>;
+  props?: React.SVGProps<SVGSVGElement>;
+};
+
+const Tecnologies = [
+  { svg: ArgoCd },
+  { svg: Docker },
+  { svg: Fastapi },
+  { svg: Git },
+  { svg: Go },
+  { svg: Grafana },
+  { svg: GrafanaTempo },
+  { svg: Helm },
+  { svg: Influxdb },
+  // { svg: Javascript },
+  { svg: Kibana },
+  { svg: Kubernetes },
+  { svg: Linux },
+  { svg: Liquibase },
+  { svg: LogoLoki },
+  { svg: Markdown },
+  { svg: Mysql },
+  { svg: OhMyZsh },
+  { svg: Portainer },
+  { svg: Postgressql },
+  { svg: Prometheus },
+  { svg: Python },
+  { svg: Rabbitmq },
+  { svg: React },
+  { svg: Redis },
+  // { svg: StackOverflow },
+  { svg: Typescript },
+];
+
 import { GitHub, LinkedIn } from "@mui/icons-material";
+
 import { Box, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled, useTheme } from "@mui/material";
 import lucasThink from "./assets/lucas-think.webp";
-import Bsky from "./components/icons/Bsky";
 import "./styles.scss";
 import dark from "./themes/dark";
 const DocumentContainer = styled(Box)`
@@ -91,6 +155,36 @@ function App() {
                 </picture>
               </PictureBox>
             </Jumbotron>
+          </Container>
+          <Container maxWidth="xl">
+            <Stack
+              direction={"row"}
+              spacing={2}
+              padding={2}
+              sx={() => ({
+                [`& > div`]: {
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "10rem",
+                  height: "10rem",
+                  flexShrink: 0,
+                  [`& > svg`]: {
+                    // width: "200px",
+                    // height: "200px",
+                    // fill: theme.palette.text.primary,
+                  },
+                },
+              })}
+              overflow={"auto"}
+              flexWrap={"nowrap"}
+            >
+              {Tecnologies.map((item, index) => (
+                <Box key={index}>
+                  <item.svg height={"100%"} width={"100%"} />
+                </Box>
+              ))}
+            </Stack>
           </Container>
         </MainContainer>
         <FooterContainer>

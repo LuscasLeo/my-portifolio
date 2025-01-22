@@ -4,6 +4,7 @@ const SvgLogoLoki = (props: React.SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width={48}
     height={56}
+    viewBox="0 0 48 56"
     fill="none"
     {...props}
   >
