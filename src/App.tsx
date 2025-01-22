@@ -8,7 +8,6 @@ import Grafana from "@components/icons/Grafana";
 import GrafanaTempo from "@components/icons/GrafanaTempo";
 import Helm from "@components/icons/Helm";
 import Influxdb from "@components/icons/Influxdb";
-import Javascript from "@components/icons/Javascript";
 import Kibana from "@components/icons/Kibana";
 import Kubernetes from "@components/icons/Kubernetes";
 import Linux from "@components/icons/Linux";
@@ -22,10 +21,15 @@ import Postgressql from "@components/icons/Postgressql";
 import Prometheus from "@components/icons/Prometheus";
 import Python from "@components/icons/Python";
 import Rabbitmq from "@components/icons/Rabbitmq";
-import React from "@components/icons/React";
+import ReactSvg from "@components/icons/React";
 import Redis from "@components/icons/Redis";
-import StackOverflow from "@components/icons/StackOverflow";
 import Typescript from "@components/icons/Typescript";
+import { GitHub, LinkedIn } from "@mui/icons-material";
+import { Box, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled, useTheme } from "@mui/material";
+import lucasThink from "./assets/lucas-think.webp";
+import "./styles.scss";
+import dark from "./themes/dark";
+import React from "react";
 
 type Tecnology = {
   svg: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -56,18 +60,19 @@ const Tecnologies = [
   { svg: Prometheus },
   { svg: Python },
   { svg: Rabbitmq },
-  { svg: React },
+  { svg: ReactSvg },
   { svg: Redis },
   // { svg: StackOverflow },
   { svg: Typescript },
 ];
 
-import { GitHub, LinkedIn } from "@mui/icons-material";
+const randomPhrases = [
+  "Sometimes made is better than perfect.",
+  "The best way to predict the future is antecipating it.",
+  "I'm not a great programmer; I'm just a good programmer with bad habits.",
+  "The best code is no code at all. Touch some grass.",
+];
 
-import { Box, Container, CssBaseline, IconButton, Stack, ThemeProvider, Typography, styled, useTheme } from "@mui/material";
-import lucasThink from "./assets/lucas-think.webp";
-import "./styles.scss";
-import dark from "./themes/dark";
 const DocumentContainer = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -112,6 +117,12 @@ const PictureBox = styled(Box)`
 
 function App() {
   const theme = useTheme();
+
+  const randomPhrase = React.useMemo(() => {
+    const index = Math.floor(Math.random() * randomPhrases.length);
+    return randomPhrases[index];
+  }, []);
+
   return (
     <ThemeProvider theme={dark}>
       <DocumentContainer>
@@ -144,9 +155,7 @@ function App() {
                 <Typography variant="h1" flex={1}>
                   Lucas Leonardo,
                 </Typography>
-                <Typography variant="body1">
-                  a self taught <b>software engineer</b> and <b>devops enthusiast</b> with 5 years in the industry.
-                </Typography>
+                <Typography variant="body1">{randomPhrase}</Typography>
               </Stack>
               <PictureBox>
                 <picture>
