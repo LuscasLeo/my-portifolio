@@ -36,46 +36,47 @@ type Tecnology = {
   svg: React.FC<React.SVGProps<SVGSVGElement>>;
   props?: React.SVGProps<SVGSVGElement>;
   name?: string;
+  link?: string;
 };
 
-// Define technology categories
+// Define technology categories with links
 const technologyCategories = {
   frontend: [
-    { svg: ReactSvg, name: "React" },
-    { svg: Typescript, name: "TypeScript" },
-    // { svg: Javascript, name: "JavaScript" },
+    { svg: ReactSvg, name: "React", link: "https://reactjs.org/" },
+    { svg: Typescript, name: "TypeScript", link: "https://www.typescriptlang.org/" },
+    // { svg: Javascript, name: "JavaScript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
   ],
   backend: [
-    { svg: Python, name: "Python" },
-    { svg: Fastapi, name: "FastAPI" },
-    { svg: Go, name: "Go" },
-    { svg: Mysql, name: "MySQL" },
-    { svg: Postgressql, name: "PostgreSQL" },
-    { svg: Redis, name: "Redis" },
-    { svg: Rabbitmq, name: "RabbitMQ" },
-    { svg: Liquibase, name: "Liquibase" },
+    { svg: Python, name: "Python", link: "https://www.python.org/" },
+    { svg: Fastapi, name: "FastAPI", link: "https://fastapi.tiangolo.com/" },
+    { svg: Go, name: "Go", link: "https://golang.org/" },
+    { svg: Mysql, name: "MySQL", link: "https://www.mysql.com/" },
+    { svg: Postgressql, name: "PostgreSQL", link: "https://www.postgresql.org/" },
+    { svg: Redis, name: "Redis", link: "https://redis.io/" },
+    { svg: Rabbitmq, name: "RabbitMQ", link: "https://www.rabbitmq.com/" },
+    { svg: Liquibase, name: "Liquibase", link: "https://www.liquibase.org/" },
   ],
   devops: [
-    { svg: Docker, name: "Docker" },
-    { svg: Kubernetes, name: "Kubernetes" },
-    { svg: ArgoCd, name: "Argo CD" },
-    { svg: Helm, name: "Helm" },
-    { svg: Git, name: "Git" },
-    { svg: Portainer, name: "Portainer" },
+    { svg: Docker, name: "Docker", link: "https://www.docker.com/" },
+    { svg: Kubernetes, name: "Kubernetes", link: "https://kubernetes.io/" },
+    { svg: ArgoCd, name: "Argo CD", link: "https://argoproj.github.io/argo-cd/" },
+    { svg: Helm, name: "Helm", link: "https://helm.sh/" },
+    { svg: Git, name: "Git", link: "https://git-scm.com/" },
+    { svg: Portainer, name: "Portainer", link: "https://www.portainer.io/" },
   ],
   platformEngineering: [
-    { svg: Grafana, name: "Grafana" },
-    { svg: Prometheus, name: "Prometheus" },
-    { svg: LogoLoki, name: "Loki" },
-    { svg: GrafanaTempo, name: "Grafana Tempo" },
-    { svg: Kibana, name: "Kibana" },
-    { svg: Influxdb, name: "InfluxDB" },
+    { svg: Grafana, name: "Grafana", link: "https://grafana.com/" },
+    { svg: Prometheus, name: "Prometheus", link: "https://prometheus.io/" },
+    { svg: LogoLoki, name: "Loki", link: "https://grafana.com/oss/loki/" },
+    { svg: GrafanaTempo, name: "Grafana Tempo", link: "https://grafana.com/oss/tempo/" },
+    { svg: Kibana, name: "Kibana", link: "https://www.elastic.co/kibana" },
+    { svg: Influxdb, name: "InfluxDB", link: "https://www.influxdata.com/" },
   ],
   other: [
-    { svg: Linux, name: "Linux" },
-    { svg: OhMyZsh, name: "Oh My Zsh" },
-    { svg: Markdown, name: "Markdown" },
-    // { svg: StackOverflow, name: "Stack Overflow" },
+    { svg: Linux, name: "Linux", link: "https://www.linux.org/" },
+    { svg: OhMyZsh, name: "Oh My Zsh", link: "https://ohmyz.sh/" },
+    { svg: Markdown, name: "Markdown", link: "https://www.markdownguide.org/" },
+    // { svg: StackOverflow, name: "Stack Overflow", link: "https://stackoverflow.com/" },
   ]
 };
 
@@ -197,6 +198,7 @@ const TechItem = styled(Box)`
   padding: ${({ theme }) => theme.spacing(2)};
   gap: ${({ theme }) => theme.spacing(1)};
   transition: transform 0.2s ease-in-out;
+  cursor: pointer;
   
   &:hover {
     transform: translateY(-5px);
@@ -208,6 +210,7 @@ const ProjectCard = styled(Card)`
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
   
   &:hover {
     transform: translateY(-5px);
@@ -355,40 +358,39 @@ function App() {
             <Grid container spacing={3}>
               {personalProjects.map((project, index) => (
                 <Grid item xs={12} md={6} lg={4} key={index}>
-                  <ProjectCard>
-                    {project.image && (
-                      <ProjectImageBox>
-                        <img src={project.image} alt={project.title} />
-                      </ProjectImageBox>
-                    )}
-                    <ProjectCardContent>
-                      <Typography variant="h5" component="h2" gutterBottom>
-                        {project.title}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary" paragraph>
-                        {project.description}
-                      </Typography>
-                      <Box mt={2}>
-                        {project.technologies.map((tech, idx) => (
-                          <TechTag key={idx}>
-                            {tech}
-                          </TechTag>
-                        ))}
-                      </Box>
-                    </ProjectCardContent>
-                    <CardActions>
-                      <Button
-                        size="small"
-                        color="primary"
-                        endIcon={<OpenInNew />}
-                        component={Link}
-                        href={project.link}
-                        target="_blank"
-                      >
-                        Visit Project
-                      </Button>
-                    </CardActions>
-                  </ProjectCard>
+                  <Link href={project.link} target="_blank" underline="none" sx={{ display: 'block', height: '100%' }}>
+                    <ProjectCard>
+                      {project.image && (
+                        <ProjectImageBox>
+                          <img src={project.image} alt={project.title} />
+                        </ProjectImageBox>
+                      )}
+                      <ProjectCardContent>
+                        <Typography variant="h5" component="h2" gutterBottom>
+                          {project.title}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" paragraph>
+                          {project.description}
+                        </Typography>
+                        <Box mt={2}>
+                          {project.technologies.map((tech, idx) => (
+                            <TechTag key={idx}>
+                              {tech}
+                            </TechTag>
+                          ))}
+                        </Box>
+                      </ProjectCardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          color="primary"
+                          endIcon={<OpenInNew />}
+                        >
+                          Visit Project
+                        </Button>
+                      </CardActions>
+                    </ProjectCard>
+                  </Link>
                 </Grid>
               ))}
             </Grid>
@@ -414,14 +416,16 @@ function App() {
                 <TechGrid container spacing={3}>
                   {items.map((item, idx) => (
                     <Grid item xs={6} sm={4} md={3} lg={2} key={idx}>
-                      <TechItem>
-                        <item.svg height="4rem" width="4rem" />
-                        {item.name && (
-                          <Typography variant="body2" color="textSecondary">
-                            {item.name}
-                          </Typography>
-                        )}
-                      </TechItem>
+                      <Link href={item.link} target="_blank" underline="none" sx={{ display: 'block' }}>
+                        <TechItem>
+                          <item.svg height="4rem" width="4rem" />
+                          {item.name && (
+                            <Typography variant="body2" color="textSecondary">
+                              {item.name}
+                            </Typography>
+                          )}
+                        </TechItem>
+                      </Link>
                     </Grid>
                   ))}
                 </TechGrid>
